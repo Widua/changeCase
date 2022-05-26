@@ -1,7 +1,7 @@
 {
   "name": "changecase",
   "version": "0.1.0",
-  "description": "My Chrome Extension",
+  "description": "Browser extension, that helps you convert text to upper, lower or alternating case",
   "private": true,
   "scripts": {
     "watch": "webpack --mode=development --watch --config config/webpack.config.js",

@@ -1,11 +1,10 @@
 # <img src="public/icons/icon_48.png" width="45" align="left"> Changecase
 
-My Chrome Extension
+ChangeCase
 
 ## Features
 
-- Feature 1
-- Feature 2
+- Adds context menu, that allows you to change case of your text.
 
 ## Install
 
@@ -15,7 +14,8 @@ My Chrome Extension
 
 Suggestions and pull requests are welcomed!.
 
----
+## TODO
+- Nicer logo.
 
 This project was bootstrapped with [Chrome Extension CLI](https://github.com/dutiyesh/chrome-extension-cli)
 

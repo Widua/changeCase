@@ -1,21 +1,86 @@
 'use strict';
 
-// With background scripts you can communicate with popup
-// and contentScript files.
-// For more information on background script,
-// See https://developer.chrome.com/extensions/background_pages
 
-chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
-  if (request.type === 'GREETINGS') {
-    const message = `Hi ${
-      sender.tab ? 'Con' : 'Pop'
-    }, my name is Bac. I am from Background. It's great to hear from you.`;
+function upper(str){
+  return str.toUpperCase() ;
+}
 
-    // Log message coming from the `request` parameter
-    console.log(request.payload.message);
-    // Send a response message
-    sendResponse({
-      message,
-    });
-  }
-});
+function lower(str){
+  return str.toLowerCase();
+}
+
+function altered(str){
+  // TODO: IMPLEMENT alteredcase return
+  return str
+}
+
+
+/*
+Don't work, don't know why. So I will back to this project... when I have enough 
+*/
+/*
+function copyToClipboard(text){
+  document.getElementById("clipboard") = text
+  var element = document.getElementById("clipboard")
+  document.body.appendChild(element) ;
+  element.select()
+  document.execCommand('copy') ;
+  element.blur()
+
+}
+*/
+
+chrome.runtime.onInstalled.addListener(
+
+function(){
+
+  chrome.contextMenus.create({
+    title:"ToUpperCase",
+    id:"upperCase",
+    contexts:["selection"]
+  })
+  
+  chrome.contextMenus.create({
+    title:"ToLowerCase",
+    id:"lowerCase",
+    contexts:["selection"]
+  })
+  
+  chrome.contextMenus.create({
+    title:"AlteredCase",
+    id:"alteredCase",
+    contexts:["selection"]
+  })
+
+}
+
+)
+
+chrome.contextMenus.onClicked.addListener(
+function(info){
+var selected = info.selectionText ;
+switch (info.menuItemId) {
+  
+  case "lowerCase":
+    selected = lower(selected)
+    copyToClipboard(selected) ;
+    console.log(selected) ;
+    break;
+  case "upperCase":
+    console.log(upper(selected)) ;
+    copyToClipboard(selected) ;
+    break;
+  case "alteredCase":
+    console.log(altered(selected)) ;
+    copyToClipboard(selected) ;
+    break;
+  default:
+    console.log("UNEXPECTED!!")
+}
+
+
+
+
+}
+
+)
